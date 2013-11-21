@@ -54,6 +54,15 @@ std::string& CPage::GetContent()
 	return m_strPageContent;
 }
 
+void CPage::ClearInfo()
+{
+	m_strURL.clear();
+	m_strRequestHead.clear();
+	m_strResponseHead.clear();
+	
+	m_strPageContent.clear();;
+}
+
 void CPage::BuildHeadInfo()
 {
 	std::string hostip;

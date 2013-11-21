@@ -9,9 +9,9 @@ void Parser::Parse(CPage& page,
 	std::string& content = page.GetContent(); 	
 	//printf("%s\n", content.c_str());
 	
-//	FILE* file = fopen("1.html", "w+");
-//	fwrite(content.c_str(), sizeof(char), content.length(), file); 
-//	fclose(file);
+	FILE* file = fopen("1.html", "w+");
+	fwrite(content.c_str(), sizeof(char), content.length(), file); 
+	fclose(file);
 
 	char* szIndex = (char*)content.c_str();
 	char* szStart = NULL;
@@ -53,7 +53,7 @@ void Parser::Parse(CPage& page,
 					fwrite(strURL.c_str(), sizeof(char), strURL.length(), file); 
 					fwrite("\n", sizeof(char), 1, file); 
 					fclose(file);
-					//todolist.push_back(strURL);
+					todolist.push_back(strURL);
 				}
 			}
 

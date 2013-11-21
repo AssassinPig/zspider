@@ -9,7 +9,6 @@ public:
 	CPage(std::string& strURL);	
 	~CPage();	
 
-
 	bool Output(std::string& filename);
 	bool Input(std::string& filename);
 	
@@ -18,6 +17,8 @@ public:
 
 	std::string& GetRequestHead();
 	std::string& GetContent();
+
+        void ClearInfo();
 	
 private:
 	void BuildHeadInfo();

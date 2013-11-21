@@ -53,8 +53,8 @@ void removelastquote(std::string& url)
 bool isInvalidateURL(std::string& url)
 {
 	size_t pos = url.find("http://");		
-	if(pos != 0) {
-		perror("is InvalidateURL");
+	if(pos == std::string::npos) {
+		printf("is InvalidateURL\n", url.c_str());
 		return false;
 	}
 	
