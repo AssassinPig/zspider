@@ -7,20 +7,10 @@
 class ClientNode
 {
 public:
-	ClientNode();
-	virtual ~ClientNode();
-	//bool InitConnect(std::string& url);
-	//std::string& GetFileName() { return m_strFileName; }
-	void Fetch(CPage& page);
-
+    ClientNode();
+    virtual ~ClientNode();
+    void Fetch(CPage& page);
 private:
-//	std::string m_strURL;
-//	char m_szHost[HOST_MAX];
-//	int m_socket;
-//	FILE* m_pFile;
-//	std::string m_strFileName;
 };
-
-
 
 #endif //_CLIENT_NODE_H__ 

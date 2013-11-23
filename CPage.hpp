@@ -6,27 +6,27 @@
 class CPage
 {
 public:
-	CPage(std::string& strURL);	
-	~CPage();	
+    CPage(std::string& strURL);	
+    ~CPage();	
 
-	bool Output(std::string& filename);
-	bool Input(std::string& filename);
-	
-	int GetPort();
-	void GetHostIP(std::string& hostip);
+    bool Output(std::string& filename);
+    bool Input(std::string& filename);
 
-	std::string& GetRequestHead();
-	std::string& GetContent();
+    int GetPort();
+    void GetHostIP(std::string& hostip);
 
-        void ClearInfo();
-	
+    std::string& GetRequestHead();
+    std::string& GetContent();
+
+    void ClearInfo();
+
 private:
-	void BuildHeadInfo();
-	std::string m_strURL;
-	std::string m_strRequestHead;
-	std::string m_strResponseHead;
-	
-	std::string m_strPageContent;
+    void BuildHeadInfo();
+    std::string m_strURL;
+    std::string m_strRequestHead;
+    std::string m_strResponseHead;
+
+    std::string m_strPageContent;
 };
 
 #endif
