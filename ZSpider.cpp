@@ -5,7 +5,8 @@
 ZSpider::ZSpider()
 {
     m_status = false;
-    std::string url = "http://www.9you.com/";
+    //std::string url = "http://www.9you.com/";
+    std::string url = "http://www.the9.com/";
     //std::string url = "http://www.sina.com.cn/";
     //std::string url = "http://www.baidu.com/s?wd=fpermissive&rsv_bp=0&ch=&tn=baidu&bar=&rsv_spt=3&ie=utf-8&rsv_n=2&rsv_sug3=1&rsv_sug=0&rsv_sug1=1&rsv_sug4=15&inputT=265";
     m_todolist.push_back(url);

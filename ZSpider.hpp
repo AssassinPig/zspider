@@ -5,14 +5,14 @@
 
 class ZSpider 
 {
-public:
-    ZSpider();
-    void Run();
+    public:
+        ZSpider();
+        void Run();
 
-private:
-    bool m_status;
-    std::list<std::string> m_todolist;
-    std::list<std::string> m_visitedlist;
+    private:
+        bool m_status;
+        std::list<std::string> m_todolist;
+        std::list<std::string> m_visitedlist;
 };
 
 
