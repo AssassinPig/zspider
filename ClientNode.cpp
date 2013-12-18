@@ -1,4 +1,5 @@
 #include "ClientNode.hpp"
+#include "zlog.hpp"
 
 
 ClientNode::ClientNode()
@@ -28,24 +29,27 @@ void ClientNode::Fetch(CPage& page)
     page.GetHostIP(hostaddr);
     sin.sin_addr.s_addr = inet_addr(hostaddr.c_str());
 
-    //printf("m_szHost:%s\n", m_szHost);
+    std::string& strRequestHead = page.GetRequestHead();	
+    ZDEBUG_LOG("page head %s", strRequestHead.c_str());
+
     int m_socket = socket( AF_INET, SOCK_STREAM, 0 );
     if( m_socket < 0 ) {
+        ZDEBUG_LOG( "Socket creation failed");
         perror( "Socket creation failed\n");
         return ;
     }
 
     int ret = connect(m_socket, (struct sockaddr *)&sin, sizeof(struct sockaddr_in));
     if(ret) {
+        ZDEBUG_LOG("connect failed");			
         perror("connect failed\n");			
         return ;
     }
 
-    std::string& strRequestHead = page.GetRequestHead();	
-    printf("request head %s\n", strRequestHead.c_str());
     int n = send(m_socket, strRequestHead.c_str(), BUF_MAX, 0); 
     if( n<=0 ) {
         perror("send failed");			
+        ZDEBUG_LOG("send failed");			
     }
     else {
 
@@ -62,7 +66,7 @@ void ClientNode::Fetch(CPage& page)
             }
 
         }while(n==BUF_MAX || n!=0);
-        printf("recv all\n");
+        ZDEBUG_LOG("recv all");
     }
 
     close(m_socket);

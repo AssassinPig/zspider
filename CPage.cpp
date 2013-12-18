@@ -60,6 +60,15 @@ void CPage::ClearInfo()
     m_strPageContent.clear();;
 }
 
+void CPage::ProcessResponse()
+{
+    size_t pos = m_strPageContent.find("<");    
+    if(pos != std::string::npos) {
+        m_strResponseHead = m_strPageContent.substr(0, pos);
+        m_strPageContent = m_strPageContent.substr(pos, std::string::npos);
+    }
+}
+
 void CPage::BuildHeadInfo()
 {
     std::string hostip;

@@ -19,6 +19,7 @@ public:
     std::string& GetContent();
 
     void ClearInfo();
+    void ProcessResponse();
 
 private:
     void BuildHeadInfo();

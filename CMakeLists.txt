@@ -7,7 +7,7 @@ LINK_DIRECTORIES(/usr/local/lib/)
 
 SET(CMAKE_BUILD_TYPE Debug)
 #SET(CMAKE_CXX_FLAGS_RELEASE "-O3 -Wall -g")
-SET(CMAKE_CXX_FLAGS_DEBUG "-O3 -Wall -g")
+SET(CMAKE_CXX_FLAGS_DEBUG "-O3 -Wall -g -gstabs")
 
 ADD_EXECUTABLE(main
 		main.cpp
@@ -15,4 +15,6 @@ ADD_EXECUTABLE(main
 		ZSpider.cpp 
 		CPage.cpp 
 		ClientNode.cpp 
-		Parser.cpp)
+		Parser.cpp
+                zlog.cpp 
+                )

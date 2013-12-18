@@ -19,6 +19,10 @@ void getip(std::string& host, char ipstr[])
 {
     struct hostent *answer;
     answer = gethostbyname(host.c_str());
+    
+    if(!answer) 
+        return;
+
     for (int i = 0; (answer->h_addr_list)[i] != NULL; i++) {
         inet_ntop(AF_INET, (answer->h_addr_list)[i], ipstr, 16);
         break;
@@ -54,7 +58,7 @@ bool isInvalidateURL(std::string& url)
 {
     size_t pos = url.find("http://");		
     if(pos == std::string::npos) {
-        printf("is InvalidateURL\n", url.c_str());
+        //printf("is InvalidateURL %s\n", url.c_str());
         return false;
     }
 

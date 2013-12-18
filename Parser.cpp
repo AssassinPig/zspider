@@ -1,5 +1,6 @@
 #include "Parser.hpp"
 #include "Util.hpp"
+#include "zlog.hpp"
 
 void Parser::Parse(CPage& page, 
         std::list<std::string>& todolist,
@@ -16,13 +17,15 @@ void Parser::Parse(CPage& page,
         if(szStart) {
             szEnd = strstr(szStart, ">");	
             if(!szEnd) {
-                printf("no match >\n");
+                //printf("no match >\n");
+                ZDEBUG_LOG("no match >");
                 break;	
             }
 
             const char* szHref = strstr(szStart, "href=\"");
             if(!szHref || szHref > szEnd) {
-                printf("no href=\n");
+                //printf("no href=\n");
+                ZDEBUG_LOG("no href=");
                 szIndex = szEnd;
                 szStart = NULL;
                 szEnd = NULL;
@@ -34,7 +37,8 @@ void Parser::Parse(CPage& page,
             if(szHref) {
                 szHrefEnd = strstr(szHref, "\"");	
             } else {
-                printf("no href \" \n");
+                //printf("no href \" \n");
+                ZDEBUG_LOG("no href");
                 szIndex = szEnd;
                 szStart = NULL;
                 szEnd = NULL;
@@ -45,6 +49,8 @@ void Parser::Parse(CPage& page,
                 std::string strURL(szHref, szHrefEnd-szHref);
                 if(isInvalidateURL(strURL)) {
                     todolist.push_back(strURL);
+                } else {
+                    ZDEBUG_LOG("InvalidateURL %s", strURL.c_str());
                 }
             }
 
@@ -52,7 +58,8 @@ void Parser::Parse(CPage& page,
             szStart = NULL;
             szEnd = NULL;
         } else {
-            printf("parse : no match < or end\n");		
+            //printf("parse : no match < or end\n");		
+            ZDEBUG_LOG("parse : no match < or end");		
             break;
         }
     }while(true);
