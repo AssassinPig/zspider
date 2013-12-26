@@ -7,7 +7,8 @@ ZLOG_INIT(spider.log);
 ZSpider::ZSpider()
 {
     m_status = false;
-    std::string url = "http://www.the9.com/";
+    //std::string url = "http://www.the9.com/";
+    std::string url = "http://www.srzc.com/";
     //std::string url = "http://www.sina.com.cn/";
     m_todolist.push_back(url);
 }
@@ -21,13 +22,13 @@ void ZSpider::Run()
     ClientNode client;
     Parser parser;
     while(m_status)	{
+        ZDEBUG_LOG("todolist size:%d", m_todolist.size());
         if(m_todolist.empty()) {
             break;
         }
 
         std::string url = m_todolist.front();	
         //if this page need to be fetched
-
         CPage page(url);		
         client.Fetch(page);	
 
